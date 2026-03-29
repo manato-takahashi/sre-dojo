@@ -1,0 +1,7 @@
+# このファイルをコピーして terraform.tfvars として使用する
+# cp terraform.tfvars.example terraform.tfvars
+
+# ECSタスクで使用するDockerイメージ
+# ECRにpush後、そのURIを指定する
+# 例: 123456789012.dkr.ecr.ap-northeast-1.amazonaws.com/sre-dojo-app:latest
+app_image = ""
