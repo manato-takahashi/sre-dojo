@@ -17,3 +17,8 @@ output "cloudwatch_log_group" {
   description = "CloudWatch Logsのロググループ名"
   value       = aws_cloudwatch_log_group.app.name
 }
+
+output "ecr_repository_url" {
+  description = "ECRリポジトリのURL（docker push先）"
+  value       = aws_ecr_repository.app.repository_url
+}

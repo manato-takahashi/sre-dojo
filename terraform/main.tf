@@ -213,7 +213,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = jsonencode([
     {
       name      = "app"
-      image     = var.app_image
+      image     = "${aws_ecr_repository.app.repository_url}:${var.app_image_tag}"
       essential = true
       portMappings = [
         {
@@ -292,4 +292,18 @@ resource "aws_iam_role" "ecs_execution" {
 resource "aws_iam_role_policy_attachment" "ecs_execution" {
   role       = aws_iam_role.ecs_execution.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+# -----------------------------------------------------
+# ECR
+# -----------------------------------------------------
+
+resource "aws_ecr_repository" "app" {
+  name = "${var.project_name}-app"
+
+  force_delete = true
+
+  tags = {
+    Name = "${var.project_name}-ecr"
+  }
 }

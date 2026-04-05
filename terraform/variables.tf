@@ -10,9 +10,10 @@ variable "project_name" {
   default     = "sre-dojo"
 }
 
-variable "app_image" {
-  description = "ECSタスクで使用するDockerイメージ"
+variable "app_image_tag" {
+  description = "ECRイメージのタグ（例: latest, 1.0.0）"
   type        = string
+  default     = "latest"
 }
 
 variable "app_port" {
